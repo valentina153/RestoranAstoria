@@ -1,0 +1,123 @@
+.index {
+    background-image: url("pozadina.jpg");
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+.naslov {
+    font-family: papyrus;
+    font-size: 80px;
+}
+
+.naslovnica {
+    font-family: Trattatello;
+    font-size: 20px;
+    color: darkslategray;
+}
+
+#oRestoranu {
+    opacity: 80%;
+    margin-top: 150px;
+    text-align: center;
+}
+
+.hrana1 {
+    margin-top: 150px;
+}
+
+.hrana1 img {
+    float: right;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.hrana1 h1 {
+    font-family: papyrus;
+    color: lightcoral;
+    text-align: center;
+    margin-top: 250px;
+}
+
+.hrana1 p {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.hrana2 span {
+    margin-right: 100px;
+    color: lightcoral;
+    font-family: papyrus;
+    font-weight: bold;
+}
+
+.hrana2 p {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.hrana2 img {
+    border-radius: 50%;
+    margin-bottom: 10px;
+    margin-left: 100px;
+    float: left;
+}
+
+.prijelaz {
+    height: 85px;
+    background-color: rgb(165, 36, 31);
+    margin-top: 250px;
+}
+
+#galerija {
+    margin-top: 50px;
+    margin-bottom: 10px;
+    height: 500px;
+}
+
+#galerija h1 {
+    font-family: papyrus;
+    text-align: center;
+    font-size: 70px;
+    margin-top: 30px;
+}
+
+#registracijaForma {
+    margin: 150px auto;
+    width: 50%;
+    box-shadow: 1px 3px 25px black;
+}
+
+.register {
+    background-image: url("hrana03.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.input {
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.inputLozinka {
+    height: 50px;
+}
+
+#passwordRequirement {
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+
+#registracijaForma button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 20px;
+}
+
+.footer {
+    background-color: darkslategray;
+    color: white;
+    text-align: center;
+    margin-top: 200px;
+    height: 150px;
+    width: 100%;
+}
