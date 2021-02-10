@@ -1,3 +1,18 @@
+<?php
+session_start();
+//if (!isset($_SESSION["token"])) header("Location: login.php");
+include("db.php");
+
+if (isset($_SESSION["token"])) $id = $_SESSION["token"];
+
+if (isset($id)) {
+    $upit = "SELECT * FROM korisnik WHERE ID=" . $id;
+    $rezultat = mysqli_query($konekcija, $upit);
+    $prijavljeni_korisnik = mysqli_fetch_assoc($rezultat);
+}
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -11,7 +26,7 @@
     <title>Restoran Astoria</title>
 
 </head>
- 
+
 <body class="index">
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="index.php">
@@ -35,26 +50,32 @@
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <button type="button" class="btn btn-light" id="registracija">Registriraj se</button>
-                <button type="button" href="#" class="btn btn-outline-secondary">Prijavi se</button>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <button class="dropdown-item" type="button">
-                            <svg width="1.3em" height="2em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                            </svg>
-                            Account</button>
-                        <div class="dropdown-divider"></div>
-                        <button class="dropdown-item" type="button">
-                            <svg width="1.3em" height="2em" viewBox="0 0 16 16" class="bi bi-power" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M5.578 4.437a5 5 0 1 0 4.922.044l.5-.866a6 6 0 1 1-5.908-.053l.486.875z" />
-                                <path fill-rule="evenodd" d="M7.5 8V1h1v7h-1z" />
-                            </svg>
-                            Logout</button>
+                <?php if (!isset($prijavljeni_korisnik)) : ?>
+                    <a href="register.php" id="registracija">Registriraj se</a>
+                    <a href="login.php" id="prijava">Prijavi se</a>
+                <?php endif ?>
+                <?php if (isset($prijavljeni_korisnik)) : ?>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?php echo ("Prijavljeni ste kao " . $prijavljeni_korisnik["ime"] . " " . $prijavljeni_korisnik["prezime"]) . "!" ?>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#">
+                                <svg width="1.3em" height="2em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                </svg>
+                                <?php echo ($prijavljeni_korisnik["ime"] . " " . $prijavljeni_korisnik["prezime"]) ?>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="logout.php" class="dropdown-item">
+                                <svg width="1.3em" height="2em" viewBox="0 0 16 16" class="bi bi-power" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M5.578 4.437a5 5 0 1 0 4.922.044l.5-.866a6 6 0 1 1-5.908-.053l.486.875z" />
+                                    <path fill-rule="evenodd" d="M7.5 8V1h1v7h-1z" />
+                                </svg>
+                                Logout</a>
+                        </div>
                     </div>
-                </div>
+                <?php endif ?>
             </form>
         </div>
     </nav>
@@ -143,7 +164,6 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    <script src="jqueryFile.js"></script>
 </body>
 
 </html>

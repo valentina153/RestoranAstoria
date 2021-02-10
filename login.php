@@ -1,25 +1,29 @@
 <?php
+session_start();
+
 require("db.php");
-$z = 1;
-if (isset($_POST["imeKorisnika"])) {
-    $z = 0;
-    if ($_POST["imeKorisnika"] == "" || $_POST["prezimeKorisnika"] == "" || $_POST["emailKorisnika"] == "" || $_POST["mobitelKorisnika"] == "" || $_POST["lozinkaKorisnika"] == "" || $_POST["pLozinkaKorisnika"] == "") {
-        $greska = "Molimo unesite sva polja.";
-        $z = 1;
-    } else if ($_POST["lozinkaKorisnika"] != $_POST["pLozinkaKorisnika"]) {
-        $greska = "Lozinke se ne podudaraju. Pokušajte ponovo.";
-        $z = 1;
+
+if (isset($_POST["emailKorisnika"])) {
+    if ($_POST["emailKorisnika"] == "" || $_POST["lozinkaKorisnika"] == "") {
+        $greska = "Molimo unesite Vašu email adresu i lozinku.";
     } else {
-        $upit = "INSERT INTO korisnik VALUES (null, '";
-        $upit .= $_POST["imeKorisnika"] . "', '";
-        $upit .= $_POST["prezimeKorisnika"] . "', '";
-        $upit .= $_POST["emailKorisnika"] . "', '";
-        $upit .= $_POST["mobitelKorisnika"] . "', '";
-        $upit .= md5($_POST["lozinkaKorisnika"]) . "', 'korisnik');";
-        $rez = mysqli_query($konekcija, $upit);
+        $SQL = "SELECT ID FROM korisnik WHERE ";
+        $SQL .= "email='" . $_POST["emailKorisnika"] . "' AND ";
+        $SQL .= " lozinka='" . md5($_POST["lozinkaKorisnika"]) . "'";
+        $rezultat = mysqli_query($konekcija, $SQL);
+
+        if (mysqli_num_rows($rezultat) == 0) {
+            $greska = "Vaši korisnički podaci nisu ispravni molimo pokušajte ponovo.";
+        } else {
+            $korisnik = mysqli_fetch_assoc($rezultat);
+            $_SESSION["token"] = $korisnik["ID"];
+            header("Location: index.php");
+        }
     }
 }
 ?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -56,7 +60,7 @@ if (isset($_POST["imeKorisnika"])) {
                     <a class="nav-link" href="index.php#galerija">Galerija</a>
                 </li>
             </ul>
-            <form class="my-2 my-lg-0">
+            <form class="form-inline my-2 my-lg-0">
                 <a href="register.php" id="registracija">Registriraj se</a>
                 <a href="login.php" id="prijava">Prijavi se</a>
                 <?php if (isset($prijavljeni_korisnik)) : ?>
@@ -84,24 +88,8 @@ if (isset($_POST["imeKorisnika"])) {
     </nav>
 
     <div class="jumbotron" id="registracijaForma">
-        <form method="POST" action="register.php">
+        <form method="POST" action="login.php">
             <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-prepend input">
-                        <span class="input-group-text"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                            </svg></span>
-                    </div>
-                    <input type="text" class="form-control rounded-right input" name="imeKorisnika" placeholder="Ime" required>
-                </div>
-                <div class="input-group">
-                    <div class="input-group-prepend input">
-                        <span class="input-group-text"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                            </svg></span>
-                    </div>
-                    <input type="text" class="form-control rounded-right input" name="prezimeKorisnika" placeholder="Prezime" required>
-                </div>
                 <div class="input-group">
                     <div class="input-group-prepend input">
                         <span class="input-group-text"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-briefcase-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -112,14 +100,6 @@ if (isset($_POST["imeKorisnika"])) {
                     <input type="email" class="form-control rounded-right input" name="emailKorisnika" placeholder="E-mail" required>
                 </div>
                 <div class="input-group">
-                    <div class="input-group-prepend input">
-                        <span class="input-group-text"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-telephone-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M2.267.98a1.636 1.636 0 0 1 2.448.152l1.681 2.162c.309.396.418.913.296 1.4l-.513 2.053a.636.636 0 0 0 .167.604L8.65 9.654a.636.636 0 0 0 .604.167l2.052-.513a1.636 1.636 0 0 1 1.401.296l2.162 1.681c.777.604.849 1.753.153 2.448l-.97.97c-.693.693-1.73.998-2.697.658a17.47 17.47 0 0 1-6.571-4.144A17.47 17.47 0 0 1 .639 4.646c-.34-.967-.035-2.004.658-2.698l.97-.969z" />
-                            </svg></span>
-                    </div>
-                    <input type="text" class="form-control rounded-right input" name="mobitelKorisnika" placeholder="Broj mobitela" required>
-                </div>
-                <div class="input-group">
                     <div class="input-group-prepend inputLozinka">
                         <span class="input-group-text"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-lock-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z" />
@@ -128,28 +108,19 @@ if (isset($_POST["imeKorisnika"])) {
                     </div>
                     <input type="password" class="form-control rounded-right inputLozinka" name="lozinkaKorisnika" placeholder="Lozinka" aria-describedby="passwordRequirement" required>
                 </div>
-                <small id="passwordRequirement" class="form-text text-muted">Vaša lozinka mora sadržavati minimalno 8 znakova.</small>
-                <div class="input-group">
-                    <div class="input-group-prepend input">
-                        <span class="input-group-text"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-lock-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z" />
-                                <path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z" />
-                            </svg></span>
-                    </div>
-                    <input type="password" class="form-control rounded-right input" name="pLozinkaKorisnika" placeholder="Ponovite lozinku" required>
-                </div>
-                <?php if (isset($greska)) : ?>
-                    <div class="alert alert-danger"><?php echo ($greska); ?></div>
-                <?php endif ?>
-                <?php if ($z == 0) : ?>
-                    <div class="alert alert-success uspjeh">Uspješno ste se registrirali.</div>
-                <?php endif ?>
                 <br>
-                <p>Imate račun? Prijavite se <a href="login.php">ovdje</a>.</p>
-                <button type="submit" class="btn btn-outline-secondary registrirajSe">Registriraj se</button>
+                <p>Nemate račun? Registrirajte se <a href="register.php">ovdje</a>.</p>
+                <?php if (isset($greska)) : ?>
+                    <div class="alert alert-danger"><?php echo ($greska) ?></div>
+                <?php endif ?>
+                <button type="submit" class="btn btn-outline-secondary">Prijavi se</button>
             </div>
+
         </form>
+
     </div>
+
+
 
     <div class="footer">
         <br /><b>Radno vrijeme</b><br />

@@ -113,6 +113,42 @@
     padding: 20px;
 }
 
+#registracijaForma p {
+    font-family: Trattatello;
+    font-size: 15px;
+    color: gray;
+}
+
+#registracijaForma p a {
+    color: darkslategray;
+    font-weight: bold;
+}
+
+#registracija {
+    color: grey;
+    font-size: 16px;
+}
+
+#registracija:hover {
+    text-decoration: none;
+    color: black;
+}
+
+#prijava {
+    color: grey;
+    border: 1px solid grey;
+    padding: 7px;
+    margin-left: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#prijava:hover {
+    text-decoration: none;
+    background-color: grey;
+    color: white;
+}
+
 .footer {
     background-color: darkslategray;
     color: white;
