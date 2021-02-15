@@ -91,6 +91,12 @@
     background-image: url("hrana03.gif");
     background-repeat: no-repeat;
     background-size: cover;
+    backdrop-filter: blur(5px);
+}
+
+.blur {
+    overflow: auto;
+    position: relative;
 }
 
 .input {
@@ -156,4 +162,118 @@
     margin-top: 200px;
     height: 150px;
     width: 100%;
+}
+
+.naruci {
+    background: rgba(211, 211, 211, 0.1);
+}
+
+.jelovnik {
+    text-align: center;
+}
+
+.jelovnik h1 {
+    font-family: papyrus;
+    font-size: 45px;
+    margin-top: 100px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.jelovnik img {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.kategorija {
+    display: inline;
+    border: 2px solid lightcoral;
+    padding: 15px;
+    font-family: Trattatello;
+    font-size: 20px;
+    color: darkslategray;
+    margin-left: 5px;
+}
+
+.kategorija:hover {
+    background-color: gray;
+    color: black;
+    text-decoration: none;
+    border: 2px solid gray;
+    cursor: pointer;
+}
+
+.toggler {
+    margin: auto;
+}
+
+.jelo {
+    text-align: center;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 250px;
+}
+
+.jelo h1 {
+    font-family: papyrus;
+    font-size: 45px;
+    margin-top: 100px;
+    display: inline-block;
+    margin-bottom: 20px;
+    color: black;
+}
+
+.jelo img {
+    display: inline-block;
+}
+
+.pozadina {
+    background: rgba(128, 128, 128, 0.4);
+    height: 100%;
+}
+
+.card {
+    margin-top: 20px;
+}
+
+#Doručak {
+    background-image: url("dorucak2.webp");
+}
+
+#Tjestenina {
+    background-image: url("tjestenina2.png");
+}
+
+#Starter {
+    background-image: url("starter2.jpg");
+}
+
+#Burgeri {
+    background-image: url("burgeri2.jpg");
+}
+
+#Specijal {
+    background-image: url("specijal2.jpg");
+}
+
+#Tortilje {
+    background-image: url("tortilje2.jpg");
+}
+
+#Pizza {
+    background-image: url("pizza2.jpg");
+}
+
+#Kolači {
+    background-image: url("kolaci2.jpg");
+}
+
+#Palačinke {
+    background-image: url("palacinke2.png");
+}
+
+#Waffle {
+    background-image: url("waffle2.jpg");
 }
