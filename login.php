@@ -2,6 +2,9 @@
 session_start();
 
 require("model/db.php");
+include("model/korisnik_class.php");
+
+$prijavljeni_korisnik = Korisnik::prijavljen();
 
 if (isset($_POST["emailKorisnika"])) {
     if ($_POST["emailKorisnika"] == "" || $_POST["lozinkaKorisnika"] == "") {
@@ -46,6 +49,9 @@ if (isset($_POST["emailKorisnika"])) {
         <div class="jumbotron" id="registracijaForma">
             <form method="POST" action="login.php">
                 <div class="form-group">
+                <?php if (isset($greska)) : ?>
+                        <div class="alert alert-danger"><?php echo ($greska) ?></div>
+                    <?php endif ?>
                     <div class="input-group">
                         <div class="input-group-prepend input">
                             <span class="input-group-text"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-briefcase-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -66,9 +72,6 @@ if (isset($_POST["emailKorisnika"])) {
                     </div>
                     <br>
                     <p>Nemate račun? Registrirajte se <a href="register.php">ovdje</a>.</p>
-                    <?php if (isset($greska)) : ?>
-                        <div class="alert alert-danger"><?php echo ($greska) ?></div>
-                    <?php endif ?>
                     <button type="submit" class="btn btn-outline-secondary">Prijavi se</button>
                 </div>
 

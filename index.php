@@ -1,16 +1,10 @@
 <?php
 session_start();
 include("model/db.php");
+include("model/korisnik_class.php");
 
-if (isset($_SESSION["token"])) $id = $_SESSION["token"];
-
-if (isset($id)) {
-    $upit = "SELECT * FROM korisnik WHERE ID=" . $id;
-    $rezultat = mysqli_query($konekcija, $upit);
-    $prijavljeni_korisnik = mysqli_fetch_assoc($rezultat);
-}
+$prijavljeni_korisnik = Korisnik::prijavljen();
 ?>
-
 
 <!doctype html>
 <html lang="en">

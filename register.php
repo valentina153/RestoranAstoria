@@ -1,5 +1,8 @@
 <?php
 require("model/db.php");
+include("model/korisnik_class.php");
+
+$prijavljeni_korisnik = Korisnik::prijavljen();
 $z = 1;
 if (isset($_POST["imeKorisnika"])) {
     $z = 0;
@@ -41,6 +44,12 @@ if (isset($_POST["imeKorisnika"])) {
         <div class="jumbotron" id="registracijaForma">
             <form method="POST" action="register.php">
                 <div class="form-group">
+                <?php if (isset($greska)) : ?>
+                        <div class="alert alert-danger"><?php echo ($greska); ?></div>
+                    <?php endif ?>
+                    <?php if ($z == 0) : ?>
+                        <div class="alert alert-success uspjeh">Uspješno ste se registrirali.</div>
+                    <?php endif ?>
                     <div class="input-group">
                         <div class="input-group-prepend input">
                             <span class="input-group-text"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -93,12 +102,7 @@ if (isset($_POST["imeKorisnika"])) {
                         </div>
                         <input type="password" class="form-control rounded-right input" name="pLozinkaKorisnika" placeholder="Ponovite lozinku" required>
                     </div>
-                    <?php if (isset($greska)) : ?>
-                        <div class="alert alert-danger"><?php echo ($greska); ?></div>
-                    <?php endif ?>
-                    <?php if ($z == 0) : ?>
-                        <div class="alert alert-success uspjeh">Uspješno ste se registrirali.</div>
-                    <?php endif ?>
+
                     <br>
                     <p>Imate račun? Prijavite se <a href="login.php">ovdje</a>.</p>
                     <button type="submit" class="btn btn-outline-secondary registrirajSe">Registriraj se</button>

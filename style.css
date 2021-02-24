@@ -157,11 +157,15 @@
 
 .footer {
     background-color: darkslategray;
-    color: white;
+    color:white;
     text-align: center;
-    margin-top: 200px;
+    margin-top: 300px;
     height: 150px;
     width: 100%;
+}
+
+#rezervacija {
+    display: inline;
 }
 
 .naruci {
@@ -276,4 +280,27 @@
 
 #Waffle {
     background-image: url("waffle2.jpg");
+}
+
+.rezervacije {
+    text-align: center;
+    margin-top: 65px;
+}
+
+.rezervacije h1 {
+    font-family: papyrus;
+    padding-top: 40px;
+    font-size: 50px;
+    background-color: rgba(211, 211, 211, 0.4);
+    box-shadow: 1px 3px 10px black;
+    height: 140px;
+}
+
+.pregled table {
+    margin: 50px auto;
+    width: 50%;
+}
+
+.pregled table th {
+    text-align: center;
 }

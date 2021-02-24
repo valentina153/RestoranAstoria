@@ -2,6 +2,9 @@
 include("model/db.php");
 include("model/jelo_class.php");
 include("model/kategorijaJela_class.php");
+include("model/korisnik_class.php");
+
+$prijavljeni_korisnik = Korisnik::prijavljen();
 ?>
 
 <!doctype html>
