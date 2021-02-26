@@ -1,5 +1,5 @@
 .index {
-    background-image: url("pozadina.jpg");
+    background-image: url("images/pozadina.jpg");
     background-repeat: no-repeat;
     background-size: auto;
 }
@@ -81,21 +81,22 @@
     margin-top: 30px;
 }
 
-#registracijaForma {
+#forma {
     margin: 150px auto;
     width: 50%;
     box-shadow: 1px 3px 25px black;
 }
 
-.register {
-    background-image: url("hrana03.gif");
+.pozadina1 {
+    background-image: url("images/hrana03.gif");
     background-repeat: no-repeat;
     background-size: cover;
     backdrop-filter: blur(5px);
 }
 
 .blur {
-    overflow: auto;
+    overflow-y: hidden;
+    overflow-x: auto;
     position: relative;
 }
 
@@ -113,19 +114,19 @@
     margin-top: 0px;
 }
 
-#registracijaForma button {
+#forma button {
     margin-top: 20px;
     width: 100%;
     padding: 20px;
 }
 
-#registracijaForma p {
+#forma p {
     font-family: Trattatello;
     font-size: 15px;
     color: gray;
 }
 
-#registracijaForma p a {
+#forma p a {
     color: darkslategray;
     font-weight: bold;
 }
@@ -157,15 +158,11 @@
 
 .footer {
     background-color: darkslategray;
-    color:white;
+    color: white;
     text-align: center;
     margin-top: 300px;
     height: 150px;
     width: 100%;
-}
-
-#rezervacija {
-    display: inline;
 }
 
 .naruci {
@@ -243,43 +240,47 @@
 }
 
 #Doručak {
-    background-image: url("dorucak2.webp");
+    background-image: url("images/dorucak2.webp");
 }
 
 #Tjestenina {
-    background-image: url("tjestenina2.png");
+    background-image: url("images/tjestenina2.png");
 }
 
 #Starter {
-    background-image: url("starter2.jpg");
+    background-image: url("images/starter2.jpg");
 }
 
 #Burgeri {
-    background-image: url("burgeri2.jpg");
+    background-image: url("images/burgeri2.jpg");
 }
 
 #Specijal {
-    background-image: url("specijal2.jpg");
+    background-image: url("images/specijal2.jpg");
 }
 
 #Tortilje {
-    background-image: url("tortilje2.jpg");
+    background-image: url("images/tortilje2.jpg");
 }
 
 #Pizza {
-    background-image: url("pizza2.jpg");
+    background-image: url("images/pizza2.jpg");
 }
 
 #Kolači {
-    background-image: url("kolaci2.jpg");
+    background-image: url("images/kolaci2.jpg");
 }
 
 #Palačinke {
-    background-image: url("palacinke2.png");
+    background-image: url("images/palacinke2.png");
 }
 
 #Waffle {
-    background-image: url("waffle2.jpg");
+    background-image: url("images/waffle2.jpg");
+}
+
+#rezervacija {
+    display: inline;
 }
 
 .rezervacije {
@@ -291,7 +292,7 @@
     font-family: papyrus;
     padding-top: 40px;
     font-size: 50px;
-    background-color: rgba(211, 211, 211, 0.4);
+    background-color: rgb(248, 249, 250);
     box-shadow: 1px 3px 10px black;
     height: 140px;
 }
@@ -303,4 +304,34 @@
 
 .pregled table th {
     text-align: center;
+}
+
+.administracija {
+    margin-top: 150px;
+}
+
+.administracija table {
+    width: 100%;
+}
+
+.administracija table th {
+    text-align: center;
+}
+
+.add {
+    width: 100%;
+}
+
+.modalButton {
+    width: 100%;
+    padding: 20px;
+}
+
+.modal-open {
+    overflow-y: auto;
+}
+
+.alert-admin {
+    margin-top: 150px;
+    margin-bottom: 1px;
 }

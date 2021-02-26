@@ -6,7 +6,7 @@ include("model/korisnik_class.php");
 
 $prijavljeni_korisnik = Korisnik::prijavljen();
 
-if (isset($_POST["emailKorisnika"])) {
+if (isset($_POST["prijava"])) {
     if ($_POST["emailKorisnika"] == "" || $_POST["lozinkaKorisnika"] == "") {
         $greska = "Molimo unesite Vašu email adresu i lozinku.";
     } else {
@@ -41,17 +41,19 @@ if (isset($_POST["emailKorisnika"])) {
 
 </head>
 
-<body class="register">
+<body class="pozadina1">
     <div class="blur">
 
         <?php include('static/navbar.php') ?>
 
-        <div class="jumbotron" id="registracijaForma">
+        <div class="jumbotron" id="forma">
             <form method="POST" action="login.php">
                 <div class="form-group">
-                <?php if (isset($greska)) : ?>
+
+                    <?php if (isset($greska)) : ?>
                         <div class="alert alert-danger"><?php echo ($greska) ?></div>
                     <?php endif ?>
+
                     <div class="input-group">
                         <div class="input-group-prepend input">
                             <span class="input-group-text"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-briefcase-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -70,19 +72,18 @@ if (isset($_POST["emailKorisnika"])) {
                         </div>
                         <input type="password" class="form-control rounded-right inputLozinka" name="lozinkaKorisnika" placeholder="Lozinka" aria-describedby="passwordRequirement" required>
                     </div>
+
                     <br>
                     <p>Nemate račun? Registrirajte se <a href="register.php">ovdje</a>.</p>
-                    <button type="submit" class="btn btn-outline-secondary">Prijavi se</button>
+
+                    <button type="submit" name="prijava" class="btn btn-outline-secondary">Prijavi se</button>
                 </div>
-
             </form>
-
         </div>
 
         <?php include('static/footer.php') ?>
     </div>
 
-    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>

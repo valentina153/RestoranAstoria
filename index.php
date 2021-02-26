@@ -4,10 +4,12 @@ include("model/db.php");
 include("model/korisnik_class.php");
 
 $prijavljeni_korisnik = Korisnik::prijavljen();
+ 
 ?>
 
+ 
 <!doctype html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -21,7 +23,9 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
 </head>
 
 <body class="index">
+
     <?php include('static/navbar.php') ?>
+    
     <div class="naslovnica">
         <div class="container-fluid">
             <div class="jumbotron" id="oRestoranu">
@@ -42,7 +46,7 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
         </div>
 
         <div class="hrana1">
-            <img src="hrana01.jpg" width="400px" height="400px" />
+            <img src="images/hrana01.jpg" width="400px" height="400px" />
             <h1>Hrana je naša strast</h1>
             <p>
                 Svakoj namirnici pristupamo s posebnom pažnjom, kako bismo<br />
@@ -52,7 +56,7 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
             </p>
         </div>
         <div class="hrana2">
-            <img src="hrana02.jpg" width="400px" height="400px" />
+            <img src="images/hrana02.jpg" width="400px" height="400px" />
             <p>
                 Kuharstvo podrazumijeva: englesku temeljitost,<br />
                 francusku umjetnost, arapsku gostoljubivost... <br />podrazumijeva

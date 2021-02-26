@@ -16,16 +16,6 @@ class Rezervacija
         return $rezultat;
     }
 
-    public static function dajRezervaciju($IDKorisnika){
-        global $konekcija;
-        
-        $upit = "SELECT * FROM rezervacija WHERE IDKorisnika = '" . $IDKorisnika . "'";
-        $rezultat = mysqli_query($konekcija, $upit);
-        $lista = array();
-        while ($redak = mysqli_fetch_assoc($rezultat))
-            array_push($lista, $redak);
-        return $rezultat;
-    }
     public static function dajTerminID($id)
     {
         global $konekcija;
@@ -114,5 +104,16 @@ class Rezervacija
                 else return 0;
             endforeach;
         endforeach;
+    }
+
+    public static function dajRezervaciju($IDKorisnika){
+        global $konekcija;
+        
+        $upit = "SELECT * FROM rezervacija WHERE IDKorisnika = '" . $IDKorisnika . "'";
+        $rezultat = mysqli_query($konekcija, $upit);
+        $lista = array();
+        while ($redak = mysqli_fetch_assoc($rezultat))
+            array_push($lista, $redak);
+        return $rezultat;
     }
 }

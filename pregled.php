@@ -20,44 +20,47 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
 
 </head>
 
-<body>
-    <?php include('static/navbar.php') ?>
+<body class="pozadina1">
+    <div class="blur">
+        
+        <?php include('static/navbar.php') ?>
 
-    <div class="rezervacije">
-        <h1>Vaše rezervacije</h1>
-    </div>
+        <div class="rezervacije">
+            <h1>Vaše rezervacije</h1>
+        </div>
 
-    <div class="container-fluid pregled">
-        <table class="table-secondary table-bordered">
-            <tr>
-                <th>Broj rezervacije</th>
-                <th>Datum</th>
-                <th>Broj stola</th>
-                <th>Termin</th>
-                <th>Vaša napomena</th>
-            </tr>
-            <?php foreach (Rezervacija::dajRezervaciju($prijavljeni_korisnik["ID"]) as $rezervacija) : ?>
+        <div class="container-fluid pregled">
+            <table class="table-secondary table-bordered">
                 <tr>
-                    <td><?php echo ($rezervacija["ID"]) ?></td>
-                    <td><?php
-                        $datum = DateTime::createFromFormat('Y-m-d', $rezervacija["datum"]);
-                        $datum = $datum->format('d.m.Y');
-                        echo ($datum) ?></td>
-                    <td><?php echo ($rezervacija["IDStola"]) ?></td>
-                    <td><?php echo (Rezervacija::dajTerminID($rezervacija["IDTermina"])) ?></td>
-                    <td><?php
-                        if ($rezervacija["komentar"] == "") echo ("#");
-                        else echo ($rezervacija["komentar"]) ?></td>
+                    <th>Broj rezervacije</th>
+                    <th>Datum</th>
+                    <th>Broj stola</th>
+                    <th>Termin</th>
+                    <th>Vaša napomena</th>
                 </tr>
-            <?php endforeach ?>
-        </table>
-    </div>
+                <?php foreach (Rezervacija::dajRezervaciju($prijavljeni_korisnik["ID"]) as $rezervacija) : ?>
+                    <tr>
+                        <td><?php echo ($rezervacija["ID"]) ?></td>
+                        <td><?php
+                            $datum = DateTime::createFromFormat('Y-m-d', $rezervacija["datum"]);
+                            $datum = $datum->format('d.m.Y');
+                            echo ($datum) ?></td>
+                        <td><?php echo ($rezervacija["IDStola"]) ?></td>
+                        <td><?php echo (Rezervacija::dajTerminID($rezervacija["IDTermina"])) ?></td>
+                        <td><?php
+                            if ($rezervacija["komentar"] == "") echo ("#");
+                            else echo ($rezervacija["komentar"]) ?></td>
+                    </tr>
+                <?php endforeach ?>
+            </table>
+        </div>
 
-    <?php include('static/footer.php') ?>
+        <?php include('static/footer.php') ?>
+    </div>
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-</body>
+</body> 
 
 </html>

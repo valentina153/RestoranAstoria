@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include("model/db.php");
 include("model/jelo_class.php");
 include("model/kategorijaJela_class.php");
@@ -18,14 +20,15 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
     <link rel="stylesheet" type="text/css" href="style.css">
 
     <title>Restoran Astoria</title>
-
+ 
 </head>
 
 <body class="naruci">
+
     <?php include('static/navbar.php') ?>
 
     <div class="jelovnik">
-        <img src="menu2.png" width="60px" height="60px">
+        <img src="images/menu2.png" width="60px" height="60px">
         <h1>Jelovnik</h1>
     </div>
 
@@ -44,7 +47,7 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
 
     <div class="jelo" id="Doručak">
         <div class="pozadina">
-            <img src="dorucak.webp" width="60px" height="60px">
+            <img src="images/dorucak.webp" width="60px" height="60px">
             <h1>Doručak</h1>
         </div>
     </div>
@@ -54,14 +57,13 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
             <?php
             foreach (Jelo::dajKategoriju("Doručak") as $jelo) :
             ?>
-                <div class="col-sm-3">
+                <div class="col">
 
                     <div class="card border-danger bg-light mb-3" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title"><?= $jelo["naziv"] ?></h5>
                             <h6 class="card-subtitle mb-2 text-muted"><?= $jelo["cijena"] ?></h6>
                             <p class="card-text"><?= $jelo["opis"] ?></p>
-                            <a href="#" class="btn btn-secondary">Naruči</a>
                         </div>
                     </div>
 
@@ -72,7 +74,7 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
 
     <div class="jelo" id="Tjestenina">
         <div class="pozadina">
-            <img src="tjestenina.png" width="60px" height="60px">
+            <img src="images/tjestenina.png" width="60px" height="60px">
             <h1>Tjestenina i rižoto</h1>
         </div>
     </div>
@@ -82,14 +84,13 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
             <?php
             foreach (Jelo::dajKategoriju("Tjestenina i rižoto") as $jelo) :
             ?>
-                <div class="col-sm-3">
+                <div class="col">
 
                     <div class="card border-danger bg-light mb-3" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title"><?= $jelo["naziv"] ?></h5>
                             <h6 class="card-subtitle mb-2 text-muted"><?= $jelo["cijena"] ?></h6>
                             <p class="card-text"><?= $jelo["opis"] ?></p>
-                            <a href="#" class="btn btn-secondary">Naruči</a>
                         </div>
                     </div>
 
@@ -100,7 +101,7 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
 
     <div class="jelo" id="Starter">
         <div class="pozadina">
-            <img src="starter.png" width="60px" height="60px">
+            <img src="images/starter.png" width="60px" height="60px">
             <h1>Starter</h1>
         </div>
     </div>
@@ -110,14 +111,13 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
             <?php
             foreach (Jelo::dajKategoriju("Starter") as $jelo) :
             ?>
-                <div class="col-sm-3">
+                <div class="col">
 
                     <div class="card border-danger bg-light mb-3" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title"><?= $jelo["naziv"] ?></h5>
                             <h6 class="card-subtitle mb-2 text-muted"><?= $jelo["cijena"] ?></h6>
                             <p class="card-text"><?= $jelo["opis"] ?></p>
-                            <a href="#" class="btn btn-secondary">Naruči</a>
                         </div>
                     </div>
 
@@ -128,7 +128,7 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
 
     <div class="jelo" id="Burgeri">
         <div class="pozadina">
-            <img src="burgeri.png" width="60px" height="60px">
+            <img src="images/burgeri.png" width="60px" height="60px">
             <h1>Burgeri</h1>
         </div>
     </div>
@@ -138,14 +138,13 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
             <?php
             foreach (Jelo::dajKategoriju("Burgeri") as $jelo) :
             ?>
-                <div class="col-sm-3">
+                <div class="col">
 
                     <div class="card border-danger bg-light mb-3" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title"><?= $jelo["naziv"] ?></h5>
                             <h6 class="card-subtitle mb-2 text-muted"><?= $jelo["cijena"] ?></h6>
                             <p class="card-text"><?= $jelo["opis"] ?></p>
-                            <a href="#" class="btn btn-secondary">Naruči</a>
                         </div>
                     </div>
 
@@ -156,7 +155,7 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
 
     <div class="jelo" id="Specijal">
         <div class="pozadina">
-            <img src="specijal.png" width="60px" height="60px">
+            <img src="images/specijal.png" width="60px" height="60px">
             <h1>Specijal</h1>
         </div>
     </div>
@@ -166,14 +165,13 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
             <?php
             foreach (Jelo::dajKategoriju("Specijal") as $jelo) :
             ?>
-                <div class="col-sm-3">
+                <div class="col">
 
                     <div class="card border-danger bg-light mb-3" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title"><?= $jelo["naziv"] ?></h5>
                             <h6 class="card-subtitle mb-2 text-muted"><?= $jelo["cijena"] ?></h6>
                             <p class="card-text"><?= $jelo["opis"] ?></p>
-                            <a href="#" class="btn btn-secondary">Naruči</a>
                         </div>
                     </div>
 
@@ -184,7 +182,7 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
 
     <div class="jelo" id="Tortilje">
         <div class="pozadina">
-            <img src="tortilje.png" width="60px" height="60px">
+            <img src="images/tortilje.png" width="60px" height="60px">
             <h1>Tortilje</h1>
         </div>
     </div>
@@ -194,14 +192,13 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
             <?php
             foreach (Jelo::dajKategoriju("Tortilje") as $jelo) :
             ?>
-                <div class="col-sm-3">
+                <div class="col">
 
                     <div class="card border-danger bg-light mb-3" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title"><?= $jelo["naziv"] ?></h5>
                             <h6 class="card-subtitle mb-2 text-muted"><?= $jelo["cijena"] ?></h6>
                             <p class="card-text"><?= $jelo["opis"] ?></p>
-                            <a href="#" class="btn btn-secondary">Naruči</a>
                         </div>
                     </div>
 
@@ -212,7 +209,7 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
 
     <div class="jelo" id="Pizza">
         <div class="pozadina">
-            <img src="pizza.webp" width="60px" height="60px">
+            <img src="images/pizza.webp" width="60px" height="60px">
             <h1>Pizza</h1>
         </div>
     </div>
@@ -222,14 +219,13 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
             <?php
             foreach (Jelo::dajKategoriju("Pizza") as $jelo) :
             ?>
-                <div class="col-sm-3">
+                <div class="col">
 
                     <div class="card border-danger bg-light mb-3" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title"><?= $jelo["naziv"] ?></h5>
                             <h6 class="card-subtitle mb-2 text-muted"><?= $jelo["cijena"] ?></h6>
                             <p class="card-text"><?= $jelo["opis"] ?></p>
-                            <a href="#" class="btn btn-secondary">Naruči</a>
                         </div>
                     </div>
 
@@ -240,7 +236,7 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
 
     <div class="jelo" id="Kolači">
         <div class="pozadina">
-            <img src="kolaci.png" width="60px" height="60px">
+            <img src="images/kolaci.png" width="60px" height="60px">
             <h1>Kolači</h1>
         </div>
     </div>
@@ -250,14 +246,13 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
             <?php
             foreach (Jelo::dajKategoriju("Kolači") as $jelo) :
             ?>
-                <div class="col-sm-3">
+                <div class="col">
 
                     <div class="card border-danger bg-light mb-3" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title"><?= $jelo["naziv"] ?></h5>
                             <h6 class="card-subtitle mb-2 text-muted"><?= $jelo["cijena"] ?></h6>
                             <p class="card-text"><?= $jelo["opis"] ?></p>
-                            <a href="#" class="btn btn-secondary">Naruči</a>
                         </div>
                     </div>
 
@@ -268,7 +263,7 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
 
     <div class="jelo" id="Palačinke">
         <div class="pozadina">
-            <img src="palacinke.webp" width="60px" height="60px">
+            <img src="images/palacinke.webp" width="60px" height="60px">
             <h1>Palačinke</h1>
         </div>
     </div>
@@ -278,14 +273,13 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
             <?php
             foreach (Jelo::dajKategoriju("Palačinke") as $jelo) :
             ?>
-                <div class="col-sm-3">
+                <div class="col">
 
                     <div class="card border-danger bg-light mb-3" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title"><?= $jelo["naziv"] ?></h5>
                             <h6 class="card-subtitle mb-2 text-muted"><?= $jelo["cijena"] ?></h6>
                             <p class="card-text"><?= $jelo["opis"] ?></p>
-                            <a href="#" class="btn btn-secondary">Naruči</a>
                         </div>
                     </div>
 
@@ -296,7 +290,7 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
 
     <div class="jelo" id="Waffle">
         <div class="pozadina">
-            <img src="waffle.png" width="60px" height="60px">
+            <img src="images/waffle.png" width="60px" height="60px">
             <h1>Waffle</h1>
         </div>
     </div>
@@ -306,14 +300,13 @@ $prijavljeni_korisnik = Korisnik::prijavljen();
             <?php
             foreach (Jelo::dajKategoriju("Waffle") as $jelo) :
             ?>
-                <div class="col-sm-3">
+                <div class="col">
 
                     <div class="card border-danger bg-light mb-3" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title"><?= $jelo["naziv"] ?></h5>
                             <h6 class="card-subtitle mb-2 text-muted"><?= $jelo["cijena"] ?></h6>
                             <p class="card-text"><?= $jelo["opis"] ?></p>
-                            <a href="#" class="btn btn-secondary">Naruči</a>
                         </div>
                     </div>
 

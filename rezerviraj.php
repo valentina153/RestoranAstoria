@@ -10,15 +10,15 @@ $z = 1;
 if (isset($_POST["submit"])) {
     if (Rezervacija::zauzetoSve() == 1) {
         $datum = DateTime::createFromFormat('Y-m-d', $_POST["datum"]);
-        $datum = $datum->format('d-m-Y');
+        $datum = $datum->format('d.m.Y');
         $greska = "Svi termini su popunjeni na dan " . $datum;
     } else if (Rezervacija::zauzetTermin() == 1) {
         $datum = DateTime::createFromFormat('Y-m-d', $_POST["datum"]);
-        $datum = $datum->format('d-m-Y');
+        $datum = $datum->format('d.m.Y');
         $greska = "Svi stolovi su zauzeti na dan " . $datum . " u terminu " . Rezervacija::dajTerminID($_POST["termin"]);
     } else if (Rezervacija::zauzeto() == 1) {
         $datum = DateTime::createFromFormat('Y-m-d', $_POST["datum"]);
-        $datum = $datum->format('d-m-Y');
+        $datum = $datum->format('d.m.Y');
         $greska = "Odabrani stol je zauzet na dan " . $datum . " u terminu " . Rezervacija::dajTerminID($_POST["termin"]);
     } else {
         Rezervacija::rezerviraj();
@@ -41,13 +41,15 @@ if (isset($_POST["submit"])) {
 
 </head>
 
-<body class="register">
+<body class="pozadina1">
     <div class="blur">
+
         <?php include("static/navbar.php") ?>
 
-        <div class="jumbotron" id="registracijaForma">
+        <div class="jumbotron" id="forma">
             <form method="POST" action="rezerviraj.php" id="rezervacija">
                 <div class="form-group">
+
                     <?php if (isset($greska)) : ?>
                         <div class="alert alert-danger"><?php echo ($greska); ?></div>
                     <?php endif ?>
@@ -71,10 +73,10 @@ if (isset($_POST["submit"])) {
                             <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
                                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
                                 </svg>
-                            </span>
+                            </span> 
                         </div>
                         <select class="form-select input" aria-label="termin" name="termin" required>
-                            <option value=""> Izaberi termin </option>
+                            <option value="">Izaberi termin</option>
                             <?php foreach (Rezervacija::dajTermin() as $termin) : ?>
                                 <option value=<?php echo ($termin["ID"]) ?> id="<?php echo ("termin" . $termin["ID"]) ?>"><?php echo ($termin["vrijeme"]) ?></option>
                             <?php endforeach ?>
@@ -107,6 +109,7 @@ if (isset($_POST["submit"])) {
                 </div>
 
             </form>
+            
             <?php
             if ($prijavljeni_korisnik == 0) {
                 echo ('

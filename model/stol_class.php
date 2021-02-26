@@ -2,7 +2,7 @@
 
 class Stol{
 
-    public static function dajStol() {
+    public static function dajStol () {
         global $konekcija;
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
         $upit = "SELECT * FROM stol";
