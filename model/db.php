@@ -3,7 +3,7 @@
 define("RACUNALO", "localhost");
 define("KORISNIK", "root");
 define("LOZINKA", "");
-define("BAZA", "restoran1");
+define("BAZA", "restoran");
 
 $konekcija = mysqli_connect(RACUNALO, KORISNIK, LOZINKA, BAZA);
 
