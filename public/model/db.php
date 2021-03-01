@@ -1,6 +1,6 @@
 <?php
 
-define("RACUNALO", "localhost");
+define("RACUNALO", "studenti.sum.ba");
 define("KORISNIK", "root");
 define("LOZINKA", "");
 define("BAZA", "restoran");
