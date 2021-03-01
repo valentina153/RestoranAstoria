@@ -1,3 +1,4 @@
+@charset "utf-8";
 .index {
     background-image: url("images/pozadina.jpg");
     background-repeat: no-repeat;
@@ -336,11 +337,10 @@
     margin-bottom: 1px;
 }
 
-.voditelj{
+.voditelj {
     margin-top: 100px;
 }
 
 .voditelj table {
     width: 100%;
 }
-
